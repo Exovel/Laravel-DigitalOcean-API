@@ -6,7 +6,7 @@ Laravel DigitalOcean API
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Latest Version](https://poser.pugx.org/graham-campbell/digitalocean-api/v/stable.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/digitalocean-api/downloads.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API/badges/quality-score.png?s=d4e7a8b8f4ba73c1a64ffef1e8946dd9ecd0da4d)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API/badges/quality-score.png?s=b9089823ad760c37162693975409ce4415758b23)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API)
 
 
