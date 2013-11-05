@@ -22,7 +22,7 @@
 
 use GrahamCampbell\CoreAPI\Classes\CoreAPI;
 
-class CloudFlareAPI extends CoreAPI {
+class DigitalOceanAPI extends CoreAPI {
 
     protected $id;
     protected $key;

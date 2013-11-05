@@ -22,8 +22,8 @@
 
 return array(
 
-    'id'  => '',
-    'key' => '',
+    'id'  => 'YourId',
+    'key' => 'YourKey',
 
     'baseurl'    => 'https://api.digitalocean.com/',
 
