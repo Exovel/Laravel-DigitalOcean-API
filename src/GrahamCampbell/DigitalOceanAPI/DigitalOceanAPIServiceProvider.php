@@ -47,7 +47,7 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['digitaloceanapi'] = $this->app->share(function($app) {
-            return new Classes\DigitalOceanAPI;
+            return new Classes\DigitalOceanAPI($app);
         });
     }
 

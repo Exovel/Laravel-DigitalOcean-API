@@ -20,25 +20,24 @@
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
 
-use Illuminate\Support\Facades\Config;
-
 use GrahamCampbell\CoreAPI\Classes\CoreAPI;
 
 class CloudFlareAPI extends CoreAPI {
 
-    protected $coreapi;
     protected $id;
     protected $key;
 
-    public function __construct() {
-        $this->id = Config::get('digitalocean-api::id');
-        $this->key = Config::get('digitalocean-api::key');
+     public function __construct($app) {
+        parent::__construct($app);
 
-        $this->setup(Config::get('digitalocean-api::baseurl'));
+        $this->id = $this->app['config']['digitalocean-api::id'];
+        $this->key = $this->app['config']['digitalocean-api::key'];
+
+        $this->setup($this->app['config']['digitalocean-api::baseurl']);
     }
 
     public function resetBaseUrl() {
-        $this->setBaseUrl(Config::get('digitalocean-api::baseurl'));
+        $this->setBaseUrl($this->app['config']['digitalocean-api::baseurl']);
     }
 
     public function getId() {
@@ -50,7 +49,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetId() {
-        $this->id = Config::get('digitalocean-api::id');
+        $this->id = $this->app['config']['digitalocean-api::id'];
     }
 
     public function getKey() {
@@ -62,7 +61,9 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetKey() {
-        $this->key = Config::get('digitalocean-api::key');
+        $this->key = $this->app['config']['digitalocean-api::key'];
     }
 
     // TODO: api methods
+
+}
