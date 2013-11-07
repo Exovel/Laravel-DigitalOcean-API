@@ -49,6 +49,9 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
         $this->app['digitaloceanapi'] = $this->app->share(function($app) {
             return new Classes\DigitalOceanAPI($app);
         });
+        $this->app['digitaloceandropletprovider'] = $this->app->share(function($app) {
+            return new Providers\DropletProvider($app);
+        });
     }
 
     /**
@@ -57,6 +60,6 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('digitaloceanapi');
+        return array('digitaloceanapi', 'digitaloceandropletprovider');
     }
 }
