@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\DigitalOceanAPI;
+<?php namespace GrahamCampbell\DigitalOceanAPI\Collections;
 
 /**
  * This file is part of Laravel DigitalOcean API by Graham Campbell.
