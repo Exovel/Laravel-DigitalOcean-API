@@ -64,6 +64,292 @@ class DigitalOceanAPI extends CoreAPI {
         $this->key = $this->app['config']['digitalocean-api::key'];
     }
 
-    // TODO: api methods
+    protected function request($action, $params, $data, $cache = false) {
+        foreach ($params as $key => $value) {
+            $action = str_replace('{'.$key.'}', $value, $action);
+        }
 
+        $url = $this->baseurl . $action . '/?client_id=' . $this->id . '&api_key=' . $this->key;
+
+        foreach ($data as $key => $value) {
+            $url= $url . '&' . $key . '=' . $value;
+        }
+
+        return $this->get($url, null, array(), $cache);
+    }
+
+    public function api_droplets() {
+        $url = 'droplets';
+
+        $params = array();
+
+        $data = array();
+
+        $cache = 15;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_new_droplet($name, $size_id, $image_id, $region_id, $ssh_key_ids = null, $private_networking = false) {
+        $url = 'droplets/new';
+
+        $params = array();
+
+        $data = array(
+            'name'      => $name,
+            'size_id'   => $size_id,
+            'image_id'  => $image_id,
+            'region_id' => $region_id
+        );
+
+        if ($ssh_key_ids !== null) {
+            $data['ssh_key_ids'] = $ssh_key_ids;
+        }
+
+        if ($private_networking === true) {
+            $data['private_networking'] = 'true';
+        }
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = 5;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_reboot_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/reboot';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_power_cycle_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/power_cycle';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_shutdown_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/shutdown';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_power_off_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/power_off';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_power_on_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/power_on';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_password_reset_droplet($droplet_id) {
+        $url = 'droplets/{droplet_id}/password_reset';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_resize_droplet($droplet_id, $size_id) {
+        $url = 'droplets/{droplet_id}/resize';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array(
+            'size_id' => $size_id
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_snapshot_droplet($droplet_id, $name = null) {
+        $url = 'droplets/{droplet_id}/snapshot';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        if ($name !== null) {
+            $data['name'] = $name;
+        }
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_restore_droplet($droplet_id, $image_id) {
+        $url = 'droplets/{droplet_id}/restore';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array(
+            'image_id' => $image_id
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_rebuild_droplet($droplet_id, $image_id) {
+        $url = 'droplets/{droplet_id}/rebuild';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array(
+            'image_id' => $image_id
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_enable_droplet_backups($droplet_id) {
+        $url = 'droplets/{droplet_id}/enable_backups';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_disable_droplet_backups($droplet_id) {
+        $url = 'droplets/{droplet_id}/disable_backups';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_rename_droplet($droplet_id, $name) {
+        $url = 'droplets/{droplet_id}/rename';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array(
+            'name' => $name
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_destroy_droplet($droplet_id, $scrub_data = false) {
+        $url = 'droplets/{droplet_id}/destroy';
+
+        $params = array(
+            'droplet_id' => $droplet_id
+        );
+
+        $data = array();
+
+        if ($scrub_data === true) {
+            $data['scrub_data'] = 'true';
+        }
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    public function api_regions() {
+        $url = 'regions';
+
+        $params = array();
+
+        $data = array();
+
+        $cache = 60;
+
+        return $this->request($url, $params, $data, $cache);
+    }
 }
