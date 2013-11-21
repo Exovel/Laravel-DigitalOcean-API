@@ -75,7 +75,23 @@ class DigitalOceanAPI extends CoreAPI {
             $url= $url . '&' . $key . '=' . $value;
         }
 
-        return $this->get($url, null, array(), $cache);
+        $response = $this->get($url, null, array(), $cache);
+
+        try {
+            $body = $response->getResponse()->json();
+        } catch (\Exception $e) {}
+
+        if (isset($body) && is_array($body)) {
+            if ($body['status'] !== 'OK') {
+                $e = DigitalOceanAPIException::factory($response->getRequest(), $response->getResponse());
+                throw $e;
+            } else {
+                return $response;
+            }
+        } else {
+            $e = DigitalOceanAPIException::factory($response->getRequest(), $response->getResponse());
+            throw $e;
+        }
     }
 
     public function api_droplets() {
