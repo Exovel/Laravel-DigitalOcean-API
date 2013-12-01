@@ -78,7 +78,7 @@ class DigitalOceanAPI extends CoreAPI {
         $response = $this->get($url, null, array(), $cache);
 
         try {
-            $body = $response->getResponse()->json();
+            $body = $response->json();
         } catch (\Exception $e) {}
 
         if (isset($body) && is_array($body)) {
