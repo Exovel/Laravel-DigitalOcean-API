@@ -21,23 +21,25 @@
  */
 
 use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use Illuminate\Cache\CacheManager;
+use Illuminate\Config\Repository;
 
 class DigitalOceanAPI extends CoreAPI {
 
     protected $id;
     protected $key;
 
-     public function __construct($app) {
-        parent::__construct($app);
+     public function __construct(CacheManager $cache, Repository $config) {
+        parent::__construct($cache, $config);
 
-        $this->id = $this->app['config']['digitalocean-api::id'];
-        $this->key = $this->app['config']['digitalocean-api::key'];
+        $this->id = $this->config['digitalocean-api::id'];
+        $this->key = $this->config['digitalocean-api::key'];
 
-        $this->setup($this->app['config']['digitalocean-api::baseurl']);
+        $this->setup($this->config['digitalocean-api::baseurl']);
     }
 
     public function resetBaseUrl() {
-        $this->setBaseUrl($this->app['config']['digitalocean-api::baseurl']);
+        $this->setBaseUrl($this->config['digitalocean-api::baseurl']);
     }
 
     public function getId() {
@@ -49,7 +51,7 @@ class DigitalOceanAPI extends CoreAPI {
     }
 
     public function resetId() {
-        $this->id = $this->app['config']['digitalocean-api::id'];
+        $this->id = $this->config['digitalocean-api::id'];
     }
 
     public function getKey() {
@@ -61,7 +63,7 @@ class DigitalOceanAPI extends CoreAPI {
     }
 
     public function resetKey() {
-        $this->key = $this->app['config']['digitalocean-api::key'];
+        $this->key = $this->config['digitalocean-api::key'];
     }
 
     protected function request($action, $params, $data, $cache = false) {
