@@ -1,5 +1,5 @@
 Laravel DigitalOcean API
-======================
+========================
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-DigitalOcean-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
@@ -8,9 +8,6 @@ Laravel DigitalOcean API
 [![Total Downloads](https://poser.pugx.org/graham-campbell/digitalocean-api/downloads.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API/badges/quality-score.png?s=b9089823ad760c37162693975409ce4415758b23)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API)
-
-
-## THIS ALPHA RELEASE IS FOR TESTING ONLY
 
 
 ## What Is Laravel DigitalOcean API?
@@ -44,13 +41,13 @@ To get the latest version of Laravel DigitalOcean API, simply require it in your
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
+You will need to register the [Laravel CoreAPI](https://github.com/GrahamCampbell/Laravel-CoreAPI) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+
+`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
+
 Once Laravel DigitalOcean API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
 `'GrahamCampbell\DigitalOceanAPI\DigitalOceanAPIServiceProvider'`
-
-You will also need to have registered the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider.
-
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
 
 You can register the DigitalOceanAPI facade in the `aliases` key of your `app/config/app.php` file if you like.
 
