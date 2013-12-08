@@ -15,7 +15,7 @@ Laravel DigitalOcean API
 Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) client for [Laravel 4](http://laravel.com).  
 
 * Laravel DigitalOcean API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
-* Laravel DigitalOcean API relies on my [Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
+* Laravel DigitalOcean API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
 * Laravel DigitalOcean API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API) to run tests to check if it's working as it should.  
 * Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) to run additional tests and checks.  
 * Laravel DigitalOcean API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
@@ -41,7 +41,7 @@ To get the latest version of Laravel DigitalOcean API, simply require it in your
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-You will need to register the [Laravel CoreAPI](https://github.com/GrahamCampbell/Laravel-CoreAPI) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
 `'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
 
