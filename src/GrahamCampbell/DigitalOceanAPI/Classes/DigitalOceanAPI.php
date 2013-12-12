@@ -29,7 +29,7 @@ class DigitalOceanAPI extends CoreAPI {
     protected $id;
     protected $key;
 
-     public function __construct(CacheManager $cache, Repository $config) {
+    public function __construct(CacheManager $cache, Repository $config) {
         parent::__construct($cache, $config);
 
         $this->id = $this->config['digitalocean-api::id'];
@@ -66,7 +66,7 @@ class DigitalOceanAPI extends CoreAPI {
         $this->key = $this->config['digitalocean-api::key'];
     }
 
-    protected function request($action, $params, $data, $cache = false) {
+    public function request($action, $params, $data, $cache = false) {
         foreach ($params as $key => $value) {
             $action = str_replace('{'.$key.'}', $value, $action);
         }
