@@ -24,12 +24,31 @@ use GrahamCampbell\CoreAPI\Classes\CoreAPI;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Config\Repository;
 
-class DigitalOceanAPI extends CoreAPI {
-
+class DigitalOceanAPI extends CoreAPI
+{
+    /**
+     * The client id.
+     *
+     * @var string
+     */
     protected $id;
+
+    /**
+     * The api key.
+     *
+     * @var string
+     */
     protected $key;
 
-    public function __construct(CacheManager $cache, Repository $config) {
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\Cache\CacheManager  $cache
+     * @param  \Illuminate\Config\Repository   $config
+     * @return void
+     */
+    public function __construct(CacheManager $cache, Repository $config)
+    {
         parent::__construct($cache, $config);
 
         $this->id = $this->config['digitalocean-api::id'];
@@ -38,35 +57,97 @@ class DigitalOceanAPI extends CoreAPI {
         $this->setup($this->config['digitalocean-api::baseurl']);
     }
 
-    public function resetBaseUrl() {
+    /**
+     * Reset the base url.
+     *
+     * @return string
+     */
+    public function resetBaseUrl()
+    {
         $this->setBaseUrl($this->config['digitalocean-api::baseurl']);
     }
 
-    public function getId() {
+    /**
+     * Get the client id.
+     *
+     * @return string
+     */
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($value) {
+    /**
+     * Set the client id.
+     *
+     * @param  string  $id
+     * @return void
+     */
+    public function setId($value)
+    {
+        if (!is_string($id)) {
+            $id = '';
+        }
+
         $this->id = $value;
     }
 
-    public function resetId() {
+    /**
+     * Reset the client id.
+     *
+     * @return void
+     */
+    public function resetId()
+    {
         $this->id = $this->config['digitalocean-api::id'];
     }
 
-    public function getKey() {
+    /**
+     * Get the api key.
+     *
+     * @return string
+     */
+    public function getKey()
+    {
         return $this->key;
     }
 
-    public function setKey($value) {
+    /**
+     * Set the api key.
+     *
+     * @param  string  $id
+     * @return void
+     */
+    public function setKey($value)
+    {
+        if (!is_string($key)) {
+            $key = '';
+        }
+
         $this->key = $value;
     }
 
-    public function resetKey() {
+    /**
+     * Reset the api key.
+     *
+     * @return void
+     */
+    public function resetKey()
+    {
         $this->key = $this->config['digitalocean-api::key'];
     }
 
-    public function request($action, $params, $data, $cache = false) {
+    /**
+     * Send a request.
+     *
+     * @param  string    $action
+     * @param  array     $params
+     * @param  array     $data
+     * @param  bool|int  $cache
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function request($action, array $params, array $data, $cache = false)
+    {
         foreach ($params as $key => $value) {
             $action = str_replace('{'.$key.'}', $value, $action);
         }
@@ -96,7 +177,8 @@ class DigitalOceanAPI extends CoreAPI {
         }
     }
 
-    public function api_droplets() {
+    public function apiListDroplets()
+    {
         $url = 'droplets';
 
         $params = array();
@@ -108,7 +190,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_new_droplet($name, $size_id, $image_id, $region_id, $ssh_key_ids = null, $private_networking = false) {
+    public function apiCreateDroplet($name, $size_id, $image_id, $region_id, $ssh_key_ids = null, $private_networking = false)
+    {
         $url = 'droplets/new';
 
         $params = array();
@@ -133,7 +216,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_droplet($droplet_id) {
+    public function apiGetDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}';
 
         $params = array(
@@ -147,7 +231,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_reboot_droplet($droplet_id) {
+    public function apiRebootDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/reboot';
 
         $params = array(
@@ -161,7 +246,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_power_cycle_droplet($droplet_id) {
+    public function apiPowerCycleDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/power_cycle';
 
         $params = array(
@@ -175,7 +261,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_shutdown_droplet($droplet_id) {
+    public function apiShutdownDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/shutdown';
 
         $params = array(
@@ -189,7 +276,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_power_off_droplet($droplet_id) {
+    public function apiPowerOffdroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/power_off';
 
         $params = array(
@@ -203,7 +291,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_power_on_droplet($droplet_id) {
+    public function apiPowerOnDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/power_on';
 
         $params = array(
@@ -217,7 +306,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_password_reset_droplet($droplet_id) {
+    public function apiPasswordResetDroplet($droplet_id)
+    {
         $url = 'droplets/{droplet_id}/password_reset';
 
         $params = array(
@@ -231,7 +321,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_resize_droplet($droplet_id, $size_id) {
+    public function apiResizeDroplet($droplet_id, $size_id)
+    {
         $url = 'droplets/{droplet_id}/resize';
 
         $params = array(
@@ -247,7 +338,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_snapshot_droplet($droplet_id, $name = null) {
+    public function apiSnapshotDroplet($droplet_id, $name = null)
+    {
         $url = 'droplets/{droplet_id}/snapshot';
 
         $params = array(
@@ -265,7 +357,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_restore_droplet($droplet_id, $image_id) {
+    public function apiRestoreDroplet($droplet_id, $image_id)
+    {
         $url = 'droplets/{droplet_id}/restore';
 
         $params = array(
@@ -281,7 +374,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_rebuild_droplet($droplet_id, $image_id) {
+    public function apiRebuildDroplet($droplet_id, $image_id)
+    {
         $url = 'droplets/{droplet_id}/rebuild';
 
         $params = array(
@@ -297,8 +391,13 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_enable_droplet_backups($droplet_id) {
-        $url = 'droplets/{droplet_id}/enable_backups';
+    public function apiBackupDroplet($droplet_id, $value = true)
+    {
+        if ($value) {
+            $url = 'droplets/{droplet_id}/enable_backups';
+        } else {
+            $url = 'droplets/{droplet_id}/disable_backups';
+        }
 
         $params = array(
             'droplet_id' => $droplet_id
@@ -311,21 +410,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_disable_droplet_backups($droplet_id) {
-        $url = 'droplets/{droplet_id}/disable_backups';
-
-        $params = array(
-            'droplet_id' => $droplet_id
-        );
-
-        $data = array();
-
-        $cache = false;
-
-        return $this->request($url, $params, $data, $cache);
-    }
-
-    public function api_rename_droplet($droplet_id, $name) {
+    public function apiRenameDroplet($droplet_id, $name)
+    {
         $url = 'droplets/{droplet_id}/rename';
 
         $params = array(
@@ -341,7 +427,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_destroy_droplet($droplet_id, $scrub_data = false) {
+    public function apiDestroyDroplet($droplet_id, $scrub_data = false)
+    {
         $url = 'droplets/{droplet_id}/destroy';
 
         $params = array(
@@ -359,7 +446,8 @@ class DigitalOceanAPI extends CoreAPI {
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function api_regions() {
+    public function apiListRegions()
+    {
         $url = 'regions';
 
         $params = array();

@@ -22,4 +22,7 @@
 
 use Guzzle\Http\Exception\BadResponseException;
 
-class DigitalOceanAPIException extends BadResponseException {}
+class DigitalOceanAPIException extends BadResponseException
+{
+    // this is the digitalocean exception class
+}

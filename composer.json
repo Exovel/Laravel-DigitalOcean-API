@@ -1,6 +1,6 @@
 {
     "name": "graham-campbell/digitalocean-api",
-    "description": "DigitalOcean API Is A DigitalOcean API Client For Laravel 4",
+    "description": "DigitalOcean API Is A DigitalOcean API Client For Laravel 4.1",
     "keywords": ["laravel", "framework", "digitalocean api", "digital ocean", "api", "DigitalOcean API", "DigitalOcean-API", "Laravel DigitalOcean API", "Laravel-DigitalOcean-API", "Graham Campbell", "GrahamCampbell"],
     "license": "Apache License 2.0",
     "authors": [
@@ -10,9 +10,9 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "orchestra/testbench": "2.0.*|2.1.*",
-        "graham-campbell/core-api": "0.3.*"
+        "php": ">=5.4.7",
+        "orchestra/testbench": "2.1.*",
+        "graham-campbell/core-api": "0.4.*"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*",

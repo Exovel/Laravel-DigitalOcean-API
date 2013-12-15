@@ -22,13 +22,15 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class DigitalOceanAPI extends Facade {
-
+class DigitalOceanAPI extends Facade
+{
     /**
      * Get the registered name of the component.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'digitaloceanapi'; }
-
+    protected static function getFacadeAccessor()
+    {
+        return 'digitaloceanapi';
+    }
 }

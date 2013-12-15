@@ -22,8 +22,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class DigitalOceanAPIServiceProvider extends ServiceProvider {
-
+class DigitalOceanAPIServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -36,7 +36,8 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->package('graham-campbell/digitalocean-api');
     }
 
@@ -45,8 +46,9 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        $this->app['digitaloceanapi'] = $this->app->share(function($app) {
+    public function register()
+    {
+        $this->app['digitaloceanapi'] = $this->app->share(function ($app) {
             return new Classes\DigitalOceanAPI($app['cache'], $app['config']);
         });
     }
@@ -56,7 +58,8 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return array('digitaloceanapi');
     }
 }

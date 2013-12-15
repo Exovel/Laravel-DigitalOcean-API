@@ -22,9 +22,43 @@
 
 return array(
 
+    /*
+    |--------------------------------------------------------------------------
+    | Client ID
+    |--------------------------------------------------------------------------
+    |
+    | This is the client id made available on your account page.
+    |
+    | Default: 'YourId'
+    |
+    */
+
     'id'  => 'YourId',
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the api key made available on your account page.
+    |
+    | Default: 'YourKey'
+    |
+    */
+
     'key' => 'YourKey',
 
-    'baseurl'    => 'https://api.digitalocean.com/',
+    /*
+    |--------------------------------------------------------------------------
+    | Base URL
+    |--------------------------------------------------------------------------
+    |
+    | This is the base url for constructing api calls.
+    |
+    | Default: 'https://api.digitalocean.com/'
+    |
+    */
+
+    'baseurl' => 'https://api.digitalocean.com/'
 
 );
