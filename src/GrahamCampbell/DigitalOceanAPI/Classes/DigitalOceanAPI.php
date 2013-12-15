@@ -83,13 +83,13 @@ class DigitalOceanAPI extends CoreAPI
      * @param  string  $id
      * @return void
      */
-    public function setId($value)
+    public function setId($id)
     {
         if (!is_string($id)) {
             $id = '';
         }
 
-        $this->id = $value;
+        $this->id = $id;
     }
 
     /**
@@ -118,13 +118,13 @@ class DigitalOceanAPI extends CoreAPI
      * @param  string  $id
      * @return void
      */
-    public function setKey($value)
+    public function setKey($key)
     {
         if (!is_string($key)) {
             $key = '';
         }
 
-        $this->key = $value;
+        $this->key = $key;
     }
 
     /**
