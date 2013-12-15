@@ -162,7 +162,9 @@ class DigitalOceanAPI extends CoreAPI
 
         try {
             $body = $response->json();
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            // ignore the exception
+        }
 
         if (isset($body) && is_array($body)) {
             if ($body['status'] !== 'OK') {
@@ -190,25 +192,31 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
-    public function apiCreateDroplet($name, $size_id, $image_id, $region_id, $ssh_key_ids = null, $private_networking = false)
+    public function apiCreateDroplet(array $droplet)
     {
         $url = 'droplets/new';
 
         $params = array();
 
         $data = array(
-            'name'      => $name,
-            'size_id'   => $size_id,
-            'image_id'  => $image_id,
-            'region_id' => $region_id
+            'name'      => $droplet['name'],
+            'size_id'   => $droplet['size_id'],
+            'image_id'  => $droplet['image_id'],
+            'region_id' => $droplet['region_id']
         );
 
-        if ($ssh_key_ids !== null) {
-            $data['ssh_key_ids'] = $ssh_key_ids;
+        if (array_key_exists('ssh_key_ids', $droplet)) {
+            if (is_array($droplet['ssh_key_ids'])) {
+                $data['ssh_key_ids'] = implode(',', $droplet['ssh_key_ids']);
+            }
         }
 
-        if ($private_networking === true) {
-            $data['private_networking'] = 'true';
+        if (array_key_exists('private_networking', $droplet)) {
+            if ($droplet['private_networking']) {
+                $data['private_networking'] = 'true';
+            } else {
+                $data['private_networking'] = 'false';
+            }
         }
 
         $cache = false;
