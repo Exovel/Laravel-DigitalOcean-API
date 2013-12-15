@@ -152,10 +152,10 @@ class DigitalOceanAPI extends CoreAPI
             $action = str_replace('{'.$key.'}', $value, $action);
         }
 
-        $url = $this->baseurl . $action . '/?client_id=' . $this->id . '&api_key=' . $this->key;
+        $url = $this->baseurl.$action.'/?client_id='.$this->id.'&api_key='.$this->key;
 
         foreach ($data as $key => $value) {
-            $url= $url . '&' . $key . '=' . $value;
+            $url= $url.'&'.$key.'='.$value;
         }
 
         $response = $this->get($url, null, array(), $cache);
