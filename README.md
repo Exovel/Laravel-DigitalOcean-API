@@ -3,10 +3,10 @@ Laravel DigitalOcean API
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-DigitalOcean-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API)
-[![Latest Version](https://poser.pugx.org/graham-campbell/digitalocean-api/v/stable.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
-[![Total Downloads](https://poser.pugx.org/graham-campbell/digitalocean-api/downloads.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
+[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API.png?branch=develop)](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-DigitalOcean-API/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API/badges/quality-score.png?s=b9089823ad760c37162693975409ce4415758b23)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API)
+[![Latest Version](https://poser.pugx.org/graham-campbell/digitalocean-api/v/stable.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API)
 
 
@@ -17,16 +17,16 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 * Laravel DigitalOcean API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel DigitalOcean API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
 * Laravel DigitalOcean API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API) to run tests to check if it's working as it should.  
-* Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) to run additional tests and checks.  
+* Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API) to run additional tests and checks.  
 * Laravel DigitalOcean API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel DigitalOcean API was not designed for user login, but for server use only.  
-* Laravel DigitalOcean API provides a [change log](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/wiki).  
-* Laravel DigitalOcean API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md).  
+* Laravel DigitalOcean API provides a [change log](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/wiki).  
+* Laravel DigitalOcean API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/LICENSE.md).  
 
 
 ## System Requirements
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or PHP 5.5+ is required.  
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel DigitalOcean API.  
 
@@ -35,23 +35,29 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 
 Please check the system requirements before installing Laravel DigitalOcean API.  
 
-To get the latest version of Laravel DigitalOcean API, simply require it in your `composer.json` file.
+To get the latest version of Laravel DigitalOcean API, simply require it in your `composer.json` file.  
 
-`"graham-campbell/digitalocean-api": "dev-master"`
+`"graham-campbell/digitalocean-api": "dev-master"`  
 
-You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
-You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
+`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`  
 
-Once Laravel DigitalOcean API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+Once Laravel DigitalOcean API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
-`'GrahamCampbell\DigitalOceanAPI\DigitalOceanAPIServiceProvider'`
+`'GrahamCampbell\DigitalOceanAPI\DigitalOceanAPIServiceProvider'`  
 
-You can register the DigitalOceanAPI facade in the `aliases` key of your `app/config/app.php` file if you like.
+You can register the DigitalOceanAPI facade in the `aliases` key of your `app/config/app.php` file if you like.  
 
-`'DigitalOceanAPI' => 'GrahamCampbell\DigitalOceanAPI\Facades\DigitalOceanAPI'`
+`'DigitalOceanAPI' => 'GrahamCampbell\DigitalOceanAPI\Facades\DigitalOceanAPI'`  
+
+
+## Usage
+
+There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-DigitalOcean-API
+) for Laravel DigitalOcean API.  
 
 
 ## Updating Your Fork
