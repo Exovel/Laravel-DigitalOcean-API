@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\DigitalOceanAPI\Classes;
+<?php
 
 /**
  * This file is part of Laravel DigitalOcean API by Graham Campbell.
@@ -12,16 +12,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-DigitalOcean-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
+
+namespace GrahamCampbell\DigitalOceanAPI\Exceptions;
 
 use Guzzle\Http\Exception\BadResponseException;
 
+/**
+ * This is the digitalocean api exception class.
+ *
+ * @package    Laravel-DigitalOcean-API
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
+ */
 class DigitalOceanAPIException extends BadResponseException
 {
     // this is the digitalocean exception class

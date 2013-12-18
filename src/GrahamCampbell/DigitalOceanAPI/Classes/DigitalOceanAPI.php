@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\DigitalOceanAPI\Classes;
+<?php
 
 /**
  * This file is part of Laravel DigitalOcean API by Graham Campbell.
@@ -12,18 +12,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+namespace GrahamCampbell\DigitalOceanAPI\Classes;
+
+use Illuminate\Cache\CacheManager;
+use Illuminate\Config\Repository;
+use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use GrahamCampbell\DigitalOceanAPI\Exceptions\DigitalOceanAPIException;
+
+/**
+ * This is the digitalocean api class.
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
- * @license    Apache License
  * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
-
-use GrahamCampbell\CoreAPI\Classes\CoreAPI;
-use Illuminate\Cache\CacheManager;
-use Illuminate\Config\Repository;
-
 class DigitalOceanAPI extends CoreAPI
 {
     /**
@@ -179,6 +185,11 @@ class DigitalOceanAPI extends CoreAPI
         }
     }
 
+    /**
+     * List the droplets.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiListDroplets()
     {
         $url = 'droplets';
@@ -192,6 +203,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Create a new droplet.
+     *
+     * @param  array  $droplet
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiCreateDroplet(array $droplet)
     {
         $url = 'droplets/new';
@@ -224,6 +241,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Get a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiGetDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}';
@@ -239,6 +262,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Reboot a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiRebootDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/reboot';
@@ -254,6 +283,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Power cycle a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiPowerCycleDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/power_cycle';
@@ -269,6 +304,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Shutdown a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiShutdownDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/shutdown';
@@ -284,6 +325,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Power off a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiPowerOffdroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/power_off';
@@ -299,6 +346,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Power on a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiPowerOnDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/power_on';
@@ -314,6 +367,12 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Password reset a droplet.
+     *
+     * @param  int  $droplet_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiPasswordResetDroplet($droplet_id)
     {
         $url = 'droplets/{droplet_id}/password_reset';
@@ -329,6 +388,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Resize a droplet.
+     *
+     * @param  int  $droplet_id
+     * @param  int  $size_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiResizeDroplet($droplet_id, $size_id)
     {
         $url = 'droplets/{droplet_id}/resize';
@@ -346,6 +412,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Snapshot a droplet.
+     *
+     * @param  int     $droplet_id
+     * @param  string  $name
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiSnapshotDroplet($droplet_id, $name = null)
     {
         $url = 'droplets/{droplet_id}/snapshot';
@@ -365,6 +438,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Restore a droplet.
+     *
+     * @param  int  $droplet_id
+     * @param  int  $image_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiRestoreDroplet($droplet_id, $image_id)
     {
         $url = 'droplets/{droplet_id}/restore';
@@ -382,6 +462,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Rebuild a droplet.
+     *
+     * @param  int  $droplet_id
+     * @param  int  $image_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiRebuildDroplet($droplet_id, $image_id)
     {
         $url = 'droplets/{droplet_id}/rebuild';
@@ -399,6 +486,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Backup a droplet.
+     *
+     * @param  int   $droplet_id
+     * @param  bool  $value
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiBackupDroplet($droplet_id, $value = true)
     {
         if ($value) {
@@ -418,6 +512,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Rename a droplet.
+     *
+     * @param  int     $droplet_id
+     * @param  string  $name
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiRenameDroplet($droplet_id, $name)
     {
         $url = 'droplets/{droplet_id}/rename';
@@ -435,6 +536,13 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Destroy a droplet.
+     *
+     * @param  int   $droplet_id
+     * @param  bool  $scrub_data
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiDestroyDroplet($droplet_id, $scrub_data = false)
     {
         $url = 'droplets/{droplet_id}/destroy';
@@ -454,6 +562,11 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /**
+     * Get a list of regions.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiListRegions()
     {
         $url = 'regions';
