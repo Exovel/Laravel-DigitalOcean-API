@@ -53,8 +53,21 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['digitaloceanapi'] = $this->app->share(function ($app) {
-            return new Classes\DigitalOceanAPI($app['cache'], $app['config']);
+        $this->registerDigitalOceanAPI();
+    }
+
+    /**
+     * Register the digitalocean api class.
+     *
+     * @return void
+     */
+    protected function registerDigitalOceanAPI()
+    {
+        $this->app->bindShared('digitaloceanapi', function ($app) {
+            $cache = $app['cache'];
+            $config = $app['config'];
+
+            return new Classes\DigitalOceanAPI($cache, $config);
         });
     }
 
