@@ -78,6 +78,8 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('digitaloceanapi');
+        return array(
+            'digitaloceanapi'
+        );
     }
 }
