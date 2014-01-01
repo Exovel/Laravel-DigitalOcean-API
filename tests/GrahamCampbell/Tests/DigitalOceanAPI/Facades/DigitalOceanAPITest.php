@@ -21,7 +21,7 @@ namespace GrahamCampbell\Tests\DigitalOceanAPI\Facades;
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
- * @copyright  Copyright 2013 Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
  * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
