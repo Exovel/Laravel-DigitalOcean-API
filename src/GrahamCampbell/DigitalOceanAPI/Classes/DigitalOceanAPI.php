@@ -66,11 +66,11 @@ class DigitalOceanAPI extends CoreAPI
     /**
      * Reset the base url.
      *
-     * @return string
+     * @return $this
      */
     public function resetBaseUrl()
     {
-        $this->setBaseUrl($this->config['digitalocean-api::baseurl']);
+        return $this->setBaseUrl($this->config['digitalocean-api::baseurl']);
     }
 
     /**
@@ -87,7 +87,7 @@ class DigitalOceanAPI extends CoreAPI
      * Set the client id.
      *
      * @param  string  $id
-     * @return void
+     * @return $this
      */
     public function setId($id)
     {
@@ -96,16 +96,18 @@ class DigitalOceanAPI extends CoreAPI
         }
 
         $this->id = $id;
+
+        return $this;
     }
 
     /**
      * Reset the client id.
      *
-     * @return void
+     * @return $this
      */
     public function resetId()
     {
-        $this->id = $this->config['digitalocean-api::id'];
+        return $this->setId($this->config['digitalocean-api::id']);
     }
 
     /**
@@ -122,7 +124,7 @@ class DigitalOceanAPI extends CoreAPI
      * Set the api key.
      *
      * @param  string  $id
-     * @return void
+     * @return $this
      */
     public function setKey($key)
     {
@@ -131,16 +133,18 @@ class DigitalOceanAPI extends CoreAPI
         }
 
         $this->key = $key;
+
+        return $this;
     }
 
     /**
      * Reset the api key.
      *
-     * @return void
+     * @return $this
      */
     public function resetKey()
     {
-        $this->key = $this->config['digitalocean-api::key'];
+        return $this->setKey($this->config['digitalocean-api::key']);
     }
 
     /**
