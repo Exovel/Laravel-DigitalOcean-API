@@ -20,7 +20,7 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 * Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API) to run additional tests and checks.  
 * Laravel DigitalOcean API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel DigitalOcean API was not designed for user login, but for server use only.  
-* Laravel DigitalOcean API provides a [change log](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/wiki).  
+* Laravel DigitalOcean API provides a [change log](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/wiki).  
 * Laravel DigitalOcean API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md).  
 
 
@@ -81,7 +81,7 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 ## Pull Requests
 
-Please submit pull requests against the develop branch.  
+Please review these guidelines before submitting any pull requests.  
 
 * Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
 * Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
