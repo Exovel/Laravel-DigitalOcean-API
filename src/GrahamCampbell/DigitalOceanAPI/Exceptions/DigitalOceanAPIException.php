@@ -24,7 +24,7 @@ use Guzzle\Http\Exception\BadResponseException;
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
  * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/develop/LICENSE.md
+ * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
 class DigitalOceanAPIException extends BadResponseException
