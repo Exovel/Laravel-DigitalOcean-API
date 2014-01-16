@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\DigitalOceanAPI\Facades;
+namespace GrahamCampbell\Tests\DigitalOceanAPI;
 
-use Illuminate\Support\Facades\Facade;
+use GrahamCampbell\TestBench\Classes\AbstractLaravelTestCase as TestCase;
 
 /**
- * This is the digitalocean api facade class.
+ * This is the abstract test case class.
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
@@ -27,15 +27,37 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
-class DigitalOceanAPI extends Facade
+abstract class AbstractTestCase extends TestCase
 {
     /**
-     * Get the registered name of the component.
+     * Get the application base path.
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected function getBasePath()
     {
-        return 'digitaloceanapi';
+        return __DIR__.'/../../../../src';
+    }
+
+    /**
+     * Get the required service providers.
+     *
+     * @return array
+     */
+    protected function getRequiredServiceProviders()
+    {
+        return array(
+            'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'
+        );
+    }
+
+    /**
+     * Get the service provider class.
+     *
+     * @return string
+     */
+    protected function getServiceProviderClass()
+    {
+        return 'GrahamCampbell\DigitalOceanAPI\DigitalOceanAPIServiceProvider';
     }
 }

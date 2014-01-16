@@ -12,19 +12,47 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-DigitalOcean-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
 
 return array(
 
-    'id'  => 'YourId',
+    /*
+    |--------------------------------------------------------------------------
+    | Client ID
+    |--------------------------------------------------------------------------
+    |
+    | This is the client id made available on your account page.
+    |
+    | Default: 'YourId'
+    |
+    */
+
+    'id' => 'YourId',
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the api key made available on your account page.
+    |
+    | Default: 'YourKey'
+    |
+    */
+
     'key' => 'YourKey',
 
-    'baseurl'    => 'https://api.digitalocean.com/',
+    /*
+    |--------------------------------------------------------------------------
+    | Base URL
+    |--------------------------------------------------------------------------
+    |
+    | This is the base url for constructing api calls.
+    |
+    | Default: 'https://api.digitalocean.com/'
+    |
+    */
+
+    'baseurl' => 'https://api.digitalocean.com/'
 
 );

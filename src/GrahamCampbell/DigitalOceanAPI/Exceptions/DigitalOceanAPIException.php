@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\DigitalOceanAPI\Facades;
+namespace GrahamCampbell\DigitalOceanAPI\Exceptions;
 
-use Illuminate\Support\Facades\Facade;
+use Guzzle\Http\Exception\BadResponseException;
 
 /**
- * This is the digitalocean api facade class.
+ * This is the digitalocean api exception class.
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
@@ -27,15 +27,7 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
-class DigitalOceanAPI extends Facade
+class DigitalOceanAPIException extends BadResponseException
 {
-    /**
-     * Get the registered name of the component.
-     *
-     * @return string
-     */
-    protected static function getFacadeAccessor()
-    {
-        return 'digitaloceanapi';
-    }
+    // this is the digitalocean exception class
 }

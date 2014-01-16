@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\DigitalOceanAPI\Facades;
-
-use Illuminate\Support\Facades\Facade;
+namespace GrahamCampbell\Tests\DigitalOceanAPI\Facades;
 
 /**
- * This is the digitalocean api facade class.
+ * This is the digitalocean api facade test case class.
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
@@ -27,15 +25,35 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
-class DigitalOceanAPI extends Facade
+class DigitalOceanAPITest extends AbstractFacadeTestCase
 {
     /**
-     * Get the registered name of the component.
+     * Get the facade accessor.
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected function getFacadeAccessor()
     {
         return 'digitaloceanapi';
+    }
+
+    /**
+     * Get the facade class.
+     *
+     * @return string
+     */
+    protected function getFacadeClass()
+    {
+        return 'GrahamCampbell\DigitalOceanAPI\Facades\DigitalOceanAPI';
+    }
+
+    /**
+     * Get the facade route.
+     *
+     * @return string
+     */
+    protected function getFacadeRoot()
+    {
+        return 'GrahamCampbell\DigitalOceanAPI\Classes\DigitalOceanAPI';
     }
 }
