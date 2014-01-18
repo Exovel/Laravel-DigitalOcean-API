@@ -16,8 +16,8 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 
 * Laravel DigitalOcean API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel DigitalOcean API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
-* Laravel DigitalOcean API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API) to run tests to check if it's working as it should.  
-* Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API) to run additional tests and checks.  
+* Laravel DigitalOcean API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API) with [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API) to check everything is working.  
+* Laravel DigitalOcean API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API) and [SensioLabsInsight](https://insight.sensiolabs.com/projects/0bc4b714-aa5e-4404-915e-9c8aab73c44b) to run additional checks.  
 * Laravel DigitalOcean API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel DigitalOcean API was not designed for user login, but for server use only.  
 * Laravel DigitalOcean API provides a [change log](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/releases), and [api docs](http://grahamcampbell.github.io/Laravel-DigitalOcean-API).  
