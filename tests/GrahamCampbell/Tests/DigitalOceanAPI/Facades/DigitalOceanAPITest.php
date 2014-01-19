@@ -16,6 +16,9 @@
 
 namespace GrahamCampbell\Tests\DigitalOceanAPI\Facades;
 
+use GrahamCampbell\Tests\DigitalOceanAPI\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+
 /**
  * This is the digitalocean api facade test case class.
  *
@@ -25,8 +28,10 @@ namespace GrahamCampbell\Tests\DigitalOceanAPI\Facades;
  * @license    https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-DigitalOcean-API
  */
-class DigitalOceanAPITest extends AbstractFacadeTestCase
+class DigitalOceanAPITest extends AbstractTestCase
 {
+    use FacadeTestCaseTrait;
+
     /**
      * Get the facade accessor.
      *
