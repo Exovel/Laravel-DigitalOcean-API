@@ -20,7 +20,7 @@ use GrahamCampbell\Tests\DigitalOceanAPI\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
 
 /**
- * This is the digitalocean api facade test case class.
+ * This is the digitalocean api facade test class.
  *
  * @package    Laravel-DigitalOcean-API
  * @author     Graham Campbell
