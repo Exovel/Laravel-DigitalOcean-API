@@ -43,7 +43,7 @@ class DigitalOceanAPIServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/digitalocean-api');
+        $this->package('graham-campbell/digitalocean-api', 'graham-campbell/digitalocean-api', __DIR__);
     }
 
     /**
