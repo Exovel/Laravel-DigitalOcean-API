@@ -36,11 +36,7 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 
 Please check the system requirements before installing Laravel DigitalOcean API.
 
-To get the latest version of Laravel DigitalOcean API, simply require it in your `composer.json` file.
-
-`"graham-campbell/digitalocean-api": "*"`
-
-You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel DigitalOcean API, simply require `"graham-campbell/digitalocean-api": "0.2.*@alpha"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
