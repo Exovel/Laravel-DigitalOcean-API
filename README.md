@@ -61,7 +61,7 @@ Laravel DigitalOcean API requires configuration.
 
 To get started, first publish the package config file:
 
-    php artisan config:publish graham-campbell/cloudflare-api
+    php artisan config:publish graham-campbell/digitalocean-api
 
 There are many config options:
 
@@ -75,7 +75,7 @@ This option (`'key'`) defines the api key to be used from your account page. The
 
 **Base URL**
 
-This option (`'baseurl'`) defines the base url for making api calls against. The default value for this setting is `'https://www.cloudflare.com/api_json.html'`.
+This option (`'baseurl'`) defines the base url for making api calls against. The default value for this setting is `'https://api.digitalocean.com/'`.
 
 **Additional Configuration**
 
