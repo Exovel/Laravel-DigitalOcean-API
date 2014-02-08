@@ -21,7 +21,7 @@ return array(
     | Client ID
     |--------------------------------------------------------------------------
     |
-    | This is the client id made available on your account page.
+    | This defines the client id to be used from your account page.
     |
     | Default: 'YourId'
     |
@@ -34,7 +34,7 @@ return array(
     | API Key
     |--------------------------------------------------------------------------
     |
-    | This is the api key made available on your account page.
+    | This defines the api key to be used from your account page.
     |
     | Default: 'YourKey'
     |
@@ -47,7 +47,7 @@ return array(
     | Base URL
     |--------------------------------------------------------------------------
     |
-    | This is the base url for constructing api calls.
+    | This defines the base url for making api calls against.
     |
     | Default: 'https://api.digitalocean.com/'
     |

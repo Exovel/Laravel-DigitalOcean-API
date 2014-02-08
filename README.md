@@ -55,6 +55,33 @@ You can register the DigitalOceanAPI facade in the `aliases` key of your `app/co
 * `'DigitalOceanAPI' => 'GrahamCampbell\DigitalOceanAPI\Facades\DigitalOceanAPI'`
 
 
+## Configuration
+
+Laravel DigitalOcean API requires configuration.
+
+To get started, first publish the package config file:
+
+    php artisan config:publish graham-campbell/cloudflare-api
+
+There are many config options:
+
+**Client ID**
+
+This option (`'id'`) defines the client id to be used from your account page. The default value for this setting is `'YourId'`.
+
+**API Key**
+
+This option (`'key'`) defines the api key to be used from your account page. The default value for this setting is `'YourKey'`.
+
+**Base URL**
+
+This option (`'baseurl'`) defines the base url for making api calls against. The default value for this setting is `'https://www.cloudflare.com/api_json.html'`.
+
+**Additional Configuration**
+
+You may want to check out the config for `graham-campbell/core-api` too. You can configure caching there.
+
+
 ## Usage
 
 There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-DigitalOcean-API
