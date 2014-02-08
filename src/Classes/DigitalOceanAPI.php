@@ -57,10 +57,10 @@ class DigitalOceanAPI extends CoreAPI
     {
         parent::__construct($cache, $config);
 
-        $this->id = $this->config['digitalocean-api::id'];
-        $this->key = $this->config['digitalocean-api::key'];
+        $this->id = $this->config['graham-campbell/digitalocean-api::id'];
+        $this->key = $this->config['graham-campbell/digitalocean-api::key'];
 
-        $this->setup($this->config['digitalocean-api::baseurl']);
+        $this->setup($this->config['graham-campbell/digitalocean-api::baseurl']);
     }
 
     /**
@@ -70,7 +70,7 @@ class DigitalOceanAPI extends CoreAPI
      */
     public function resetBaseUrl()
     {
-        return $this->setBaseUrl($this->config['digitalocean-api::baseurl']);
+        return $this->setBaseUrl($this->config['graham-campbell/digitalocean-api::baseurl']);
     }
 
     /**
@@ -107,7 +107,7 @@ class DigitalOceanAPI extends CoreAPI
      */
     public function resetId()
     {
-        return $this->setId($this->config['digitalocean-api::id']);
+        return $this->setId($this->config['graham-campbell/digitalocean-api::id']);
     }
 
     /**
@@ -144,7 +144,7 @@ class DigitalOceanAPI extends CoreAPI
      */
     public function resetKey()
     {
-        return $this->setKey($this->config['digitalocean-api::key']);
+        return $this->setKey($this->config['graham-campbell/digitalocean-api::key']);
     }
 
     /**
