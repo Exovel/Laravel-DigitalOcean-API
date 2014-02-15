@@ -27,7 +27,7 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 
 ## System Requirements
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or HHVM 2.4+ (HHVM support is incomplete mainly due to dependencies).
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel DigitalOcean API.
 
@@ -36,7 +36,7 @@ Laravel DigitalOcean API is a [DigitalOcean API](https://api.digitalocean.com) c
 
 Please check the system requirements before installing Laravel DigitalOcean API.
 
-To get the latest version of Laravel DigitalOcean API, simply require `"graham-campbell/digitalocean-api": "0.2.*@alpha"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel DigitalOcean API, simply require `"graham-campbell/digitalocean-api": "0.3.*@dev"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel DigitalOcean API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
