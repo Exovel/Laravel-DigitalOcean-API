@@ -2,13 +2,13 @@ Laravel DigitalOcean API
 ========================
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-DigitalOcean-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API.png)](https://travis-ci.org/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-DigitalOcean-API/badge.png)](https://coveralls.io/r/GrahamCampbell/Laravel-DigitalOcean-API)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API/badges/quality-score.png?s=b9089823ad760c37162693975409ce4415758b23)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-DigitalOcean-API)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/0bc4b714-aa5e-4404-915e-9c8aab73c44b/mini.png)](https://insight.sensiolabs.com/projects/0bc4b714-aa5e-4404-915e-9c8aab73c44b)
 [![Software License](https://poser.pugx.org/graham-campbell/digitalocean-api/license.png)](https://github.com/GrahamCampbell/Laravel-DigitalOcean-API/blob/master/LICENSE.md)
 [![Latest Version](https://poser.pugx.org/graham-campbell/digitalocean-api/v/stable.png)](https://packagist.org/packages/graham-campbell/digitalocean-api)
+[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-DigitalOcean-API)
 
 
 ## What Is Laravel DigitalOcean API?
