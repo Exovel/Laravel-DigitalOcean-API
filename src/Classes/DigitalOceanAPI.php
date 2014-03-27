@@ -32,6 +32,7 @@ use GrahamCampbell\DigitalOceanAPI\Exceptions\DigitalOceanAPIException;
  */
 class DigitalOceanAPI extends CoreAPI
 {
+
     /**
      * The client id.
      *
@@ -159,13 +160,13 @@ class DigitalOceanAPI extends CoreAPI
     public function request($action, array $params, array $data, $cache = false)
     {
         foreach ($params as $key => $value) {
-            $action = str_replace('{'.$key.'}', $value, $action);
+            $action = str_replace('{' . $key . '}', $value, $action);
         }
 
-        $url = $this->baseurl.$action.'/?client_id='.$this->id.'&api_key='.$this->key;
+        $url = $this->baseurl . $action . '/?client_id=' . $this->id . '&api_key=' . $this->key;
 
         foreach ($data as $key => $value) {
-            $url= $url.'&'.$key.'='.$value;
+            $url = $url . '&' . $key . '=' . $value;
         }
 
         $response = $this->get($url, null, array(), $cache);
@@ -188,6 +189,8 @@ class DigitalOceanAPI extends CoreAPI
             throw $e;
         }
     }
+
+    /*  Droplets */
 
     /**
      * List the droplets.
@@ -220,9 +223,9 @@ class DigitalOceanAPI extends CoreAPI
         $params = array();
 
         $data = array(
-            'name'      => $droplet['name'],
-            'size_id'   => $droplet['size_id'],
-            'image_id'  => $droplet['image_id'],
+            'name' => $droplet['name'],
+            'size_id' => $droplet['size_id'],
+            'image_id' => $droplet['image_id'],
             'region_id' => $droplet['region_id']
         );
 
@@ -237,6 +240,14 @@ class DigitalOceanAPI extends CoreAPI
                 $data['private_networking'] = 'true';
             } else {
                 $data['private_networking'] = 'false';
+            }
+        }
+
+        if (array_key_exists('backups_enabled', $droplet)) {
+            if ($droplet['backups_enabled']) {
+                $data['backups_enabled'] = 'true';
+            } else {
+                $data['backups_enabled'] = 'false';
             }
         }
 
@@ -566,6 +577,8 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
+    /* Regions */
+
     /**
      * Get a list of regions.
      *
@@ -583,4 +596,475 @@ class DigitalOceanAPI extends CoreAPI
 
         return $this->request($url, $params, $data, $cache);
     }
+
+    /* Sizes */
+
+    /**
+     * Get a list of sizes.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiListSizes()
+    {
+        $url = 'sizes';
+
+        $params = array();
+
+        $data = array();
+
+        $cache = 60;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /* Images */
+
+    /**
+     * Get a list of images.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiListImages()
+    {
+        $url = 'images';
+
+        $params = array();
+        
+        $data = array();
+        
+        $cache = 60;
+        
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Get an image.
+     *
+     * @param  int  $image_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetImage($image_id)
+    {
+        $url = 'images/{image_id}';
+
+        $params = array(
+            'image_id' => $image_id
+        );
+
+        $data = array();
+
+        $cache = 5;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Destroy an image.
+     *
+     * @param  int  $image_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDestroyImage($image_id)
+    {
+        $url = 'images/{image_id}';
+
+        $params = array(
+            'image_id' => $image_id
+        );
+
+        $data = array();
+
+        $cache = 5;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Transfer an image.
+     *
+     * @param  int  $image_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiTransferImage($image_id, $region_id)
+    {
+        $url = 'images/{image_id}/transfer';
+
+        $params = array(
+            'image_id' => $image_id
+        );
+
+        $data = array(
+            'region_id' => $region_id
+        );
+
+        $cache = 5;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /* Ssh Keys */
+
+    /**
+     * Get a list of Ssh Keys.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiListSshKeys()
+    {
+        $url = 'ssh_keys';
+
+        $params = array();
+        
+        $data = array();
+        
+        $cache = 60;
+        
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Add an Ssh key.
+     *
+     * @param  string  $name
+     * @param  string  $ssh_pub_key
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiAddSshKey($name, $ssh_pub_key)
+    {
+        $url = 'ssh_keys/new';
+
+        $params = array();
+
+        $data = array(
+            'name' => $name,
+            'ssh_pub_key' => $ssh_pub_key
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Get an Ssh Key.
+     *
+     * @param  int  $ssh_key_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetSshKey($ssh_key_id)
+    {
+        $url = 'ssh_keys/{ssh_key_id}';
+
+        $params = array(
+            'ssh_key_id' => $ssh_key_id
+        );
+
+        $data = array();
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Edit an Ssh Key.
+     *
+     * @param  int  $ssh_key_id
+     * @param  string  $ssh_pub_key
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiEditSshKey($ssh_key_id, $ssh_pub_key)
+    {
+        $url = 'ssh_keys/{ssh_key_id}/edit';
+
+        $params = array(
+            'ssh_key_id' => $ssh_key_id
+        );
+
+        $data = array(
+            'ssh_pub_key' => $ssh_pub_key
+        );
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Destroy an Ssh Key.
+     *
+     * @param  int  $ssh_key_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDestroySshKey($ssh_key_id)
+    {
+        $url = 'ssh_keys/{ssh_key_id}/destroy';
+
+        $params = array(
+            'ssh_key_id' => $ssh_key_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /* Domains */
+
+    /**
+     * Get a list of Domains.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiListDomains()
+    {
+        $url = 'domains';
+        
+        $params = array();
+        
+        $data = array();
+        
+        $cache = 60;
+        
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Add a Domain.
+     *
+     * @param  string  $name
+     * @param  string  $ip_address
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiAddDomain($name, $ip_address)
+    {
+        $url = 'domains/new';
+
+        $params = array();
+
+        $data = array(
+            'name' => $name,
+            'ip_address' => $ip_address
+        );
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Get a Domain.
+     *
+     * @param  int  $domain_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetDomain($domain_id)
+    {
+        $url = 'domains/{domain_id}';
+
+        $params = array(
+            'domain_id' => $domain_id
+        );
+
+        $data = array();
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Destroy an Domain.
+     *
+     * @param  int  $domain_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDestroyDomain($domain_id)
+    {
+        $url = 'domains/{domain_id}/destroy';
+
+        $params = array(
+            'domain_id' => $domain_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Get Domain records.
+     *
+     * @param  int  $domain_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetDomainRecords($domain_id)
+    {
+        $url = 'domains/{domain_id}/records';
+
+        $params = array(
+            'domain_id' => $domain_id
+        );
+
+        $data = array();
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Add a Domain Record.
+     *
+     * @param  array  $domain_record
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiAddDomainRecord($domain_id, $domain_record)
+    {
+        $url = 'domains/{domain_id}/records/new';
+
+        $params = array(
+            'domain_id' => $domain_id
+        );
+
+        $data = array(
+            'record_type' => $domain_record['record_type'],
+            'data' => $domain_record['data']
+        );
+
+        if (array_key_exists('name', $domain_record)) {
+            $data['name'] = $domain_record['name'];
+        }
+
+        if (array_key_exists('priority', $domain_record)) {
+            $data['priority'] = $domain_record['priority'];
+        }
+
+        if (array_key_exists('port', $domain_record)) {
+            $data['port'] = $domain_record['port'];
+        }
+
+        if (array_key_exists('weight', $domain_record)) {
+            $data['weight'] = $domain_record['weight'];
+        }
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Get a Domain Record.
+     *
+     * @param  int  $domain_id
+     * @param  int  $record_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetDomainRecord($domain_id, $record_id)
+    {
+        $url = 'domains/{domain_id}/records';
+
+        $params = array(
+            'domain_id' => $domain_id,
+            'record_id' => $record_id
+        );
+
+        $data = array();
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Add a Domain Record.
+     *
+     * @param  array  $domain_record
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiEditDomainRecord($domain_id, $record_id, $domain_record)
+    {
+        $url = 'domains/{domain_id}/records/{record_id}/edit';
+
+        $params = array(
+            'domain_id' => $domain_id,
+            'record_id' => $record_id
+        );
+
+        $data = array(
+            'record_type' => $domain_record['record_type'],
+            'data' => $domain_record['data']
+        );
+
+        if (array_key_exists('name', $domain_record)) {
+            $data['name'] = $domain_record['name'];
+        }
+
+        if (array_key_exists('priority', $domain_record)) {
+            $data['priority'] = $domain_record['priority'];
+        }
+
+        if (array_key_exists('port', $domain_record)) {
+            $data['port'] = $domain_record['port'];
+        }
+
+        if (array_key_exists('weight', $domain_record)) {
+            $data['weight'] = $domain_record['weight'];
+        }
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /**
+     * Destroy a Domain Record.
+     *
+     * @param  int  $domain_id
+     * @param  int  $record_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDestroyDomainRecord($domain_id, $record_id)
+    {
+        $url = 'domains/{domain_id}/records/{record_id}/destroy';
+
+        $params = array(
+            'domain_id' => $domain_id,
+            'record_id' => $record_id
+        );
+
+        $data = array();
+
+        $cache = false;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
+    /* Events */
+
+    /**
+     * Get an event.
+     *
+     * @param  int  $event_id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiGetEvent($event_id)
+    {
+        $url = 'events/{event_id}';
+
+        $params = array(
+            'event_id' => $event_id
+        );
+
+        $data = array();
+
+        $cache = 20;
+
+        return $this->request($url, $params, $data, $cache);
+    }
+
 }
