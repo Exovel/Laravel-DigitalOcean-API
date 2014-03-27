@@ -160,13 +160,13 @@ class DigitalOceanAPI extends CoreAPI
     public function request($action, array $params, array $data, $cache = false)
     {
         foreach ($params as $key => $value) {
-            $action = str_replace('{' . $key . '}', $value, $action);
+            $action = str_replace('{'.$key.'}', $value, $action);
         }
 
-        $url = $this->baseurl . $action . '/?client_id=' . $this->id . '&api_key=' . $this->key;
+        $url = $this->baseurl.$action.'/?client_id='.$this->id.'&api_key='.$this->key;
 
         foreach ($data as $key => $value) {
-            $url = $url . '&' . $key . '=' . $value;
+            $url = $url.'&'.$key.'='.$value;
         }
 
         $response = $this->get($url, null, array(), $cache);
@@ -189,8 +189,6 @@ class DigitalOceanAPI extends CoreAPI
             throw $e;
         }
     }
-
-    /*  Droplets */
 
     /**
      * List the droplets.
@@ -223,9 +221,9 @@ class DigitalOceanAPI extends CoreAPI
         $params = array();
 
         $data = array(
-            'name' => $droplet['name'],
-            'size_id' => $droplet['size_id'],
-            'image_id' => $droplet['image_id'],
+            'name'      => $droplet['name'],
+            'size_id'   => $droplet['size_id'],
+            'image_id'  => $droplet['image_id'],
             'region_id' => $droplet['region_id']
         );
 
@@ -577,8 +575,6 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
-    /* Regions */
-
     /**
      * Get a list of regions.
      *
@@ -617,8 +613,6 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
-    /* Images */
-
     /**
      * Get a list of images.
      *
@@ -629,11 +623,11 @@ class DigitalOceanAPI extends CoreAPI
         $url = 'images';
 
         $params = array();
-        
+
         $data = array();
-        
+
         $cache = 60;
-        
+
         return $this->request($url, $params, $data, $cache);
     }
 
@@ -674,7 +668,7 @@ class DigitalOceanAPI extends CoreAPI
 
         $data = array();
 
-        $cache = 5;
+        $cache = false;
 
         return $this->request($url, $params, $data, $cache);
     }
@@ -697,12 +691,10 @@ class DigitalOceanAPI extends CoreAPI
             'region_id' => $region_id
         );
 
-        $cache = 5;
+        $cache = false;
 
         return $this->request($url, $params, $data, $cache);
     }
-
-    /* Ssh Keys */
 
     /**
      * Get a list of Ssh Keys.
@@ -714,11 +706,11 @@ class DigitalOceanAPI extends CoreAPI
         $url = 'ssh_keys';
 
         $params = array();
-        
+
         $data = array();
-        
+
         $cache = 60;
-        
+
         return $this->request($url, $params, $data, $cache);
     }
 
@@ -761,7 +753,7 @@ class DigitalOceanAPI extends CoreAPI
 
         $data = array();
 
-        $cache = 20;
+        $cache = 60;
 
         return $this->request($url, $params, $data, $cache);
     }
@@ -811,8 +803,6 @@ class DigitalOceanAPI extends CoreAPI
         return $this->request($url, $params, $data, $cache);
     }
 
-    /* Domains */
-
     /**
      * Get a list of Domains.
      *
@@ -821,13 +811,13 @@ class DigitalOceanAPI extends CoreAPI
     public function apiListDomains()
     {
         $url = 'domains';
-        
+
         $params = array();
-        
+
         $data = array();
-        
+
         $cache = 60;
-        
+
         return $this->request($url, $params, $data, $cache);
     }
 
@@ -1043,8 +1033,6 @@ class DigitalOceanAPI extends CoreAPI
 
         return $this->request($url, $params, $data, $cache);
     }
-
-    /* Events */
 
     /**
      * Get an event.
